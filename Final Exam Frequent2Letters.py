@@ -1,9 +1,4 @@
-# Aman Patel
-# 817629
-# ICS3U0C
-# Final Summative Part 1 Question 1 Frequent2Letters
-# 19 January 2018
-# Mr. Veera
+Frequent Letters
 
 # Prompting user for input
 word = input("Enter a word which is atleast 6 characters: ")
