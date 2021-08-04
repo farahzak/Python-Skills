@@ -1,0 +1,52 @@
+inputs = input("").split(" ")   #prompt the user to n and m value and split it
+n = int(inputs[0])   #take the n value from the split list
+m = int(inputs[1])   #take the m value from the split list
+
+mainlist = []        #creating a list to store all of the rows 
+outputlist = []      #creating a list to store the output
+ 
+for x in range (n):  #creating empty lists inside the output for the number of rows
+  outputlist.append([])
+
+for rowvalue in range (n):     #prompt the user for a row and append it to a list
+  rows = list(input(""))
+  mainlist.append(rows)
+
+for i in range (n):       #creating a loop to go through each row 
+
+  for j in range (m):     #creating a loop to go through each index of the row
+    count = 0             #initial couter for the number of adjacent mines
+    indexvalue = int(j)   #creating integer variable for j
+    row = int(i)          #creating integer variable for i
+
+    if (mainlist[row][j] == "-"):    #if the current index is a -, then do the following
+
+      if (indexvalue - 1 >= 0 and mainlist[row][indexvalue-1] == "*"):   #checking if there is a * behind the -
+        count += 1
+      if (indexvalue + 1 <= (m - 1) and mainlist[row][indexvalue + 1] == "*"):  #checking for a * in front of the -
+        count += 1
+      if ((row-1) >= 0):   #checking if there is a row before the current one
+          if (indexvalue - 1 >= 0 and mainlist[row-1][indexvalue-1] == "*"):   #checking the diagonals and the top of the previous row
+            count += 1
+          if (indexvalue + 1 <= (m - 1) and mainlist[row-1][indexvalue + 1] == "*"):
+            count += 1
+          if (mainlist[row-1][indexvalue] == "*"):
+            count += 1
+
+      if ((row+1) <= n-1):    #checking if there is a row after the current one
+          if (indexvalue - 1 >= 0 and mainlist[row+1][indexvalue-1] == "*"):   #checking the diagonals and the same index in the next row to check for adjacent *
+            count += 1
+          if (indexvalue + 1 <= (m - 1) and mainlist[row+1][indexvalue + 1] == "*"):
+            count += 1
+          if (mainlist[row+1][indexvalue] == "*"):
+            count += 1
+
+    if (mainlist[row][indexvalue] == "*"):    #if the current index is *, append * into the output
+      outputlist[row].append("*")
+    else:                                     #else append the count value for the number of adjacent *
+      outputlist[row].append(count)
+
+for i in range (n):     #loop to pring the output in order 
+  for j in range (m):
+    print(str(outputlist[i][j]), end = "")
+  print()
