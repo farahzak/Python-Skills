@@ -1,9 +1,4 @@
-# Aman Patel
-# 817629
-# ICS3U0C
-# Final Summative Part 1 Question 1 Frequent2Letters
-# 19 January 2018
-# Mr. Veera
+
 
 # Prompting user for input 
 count = int(input("What is the count: "))
